@@ -1,1 +1,2 @@
-# Kain_Moveset-SL1-
+# Kain_Moveset-
+Repository of code for Kain Highwind.
