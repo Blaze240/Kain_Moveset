@@ -9,13 +9,13 @@ Includes hitbox adjustments for the following moves (increased range):
 * Up Smash
 * Neutral Aerial
 * Up Aerial
+* Back Aerial
 
   # Move Replacements
   Includes move and hitbox replacements with the following:
   * Forward Smash with Byleth's forward smash (same startup, less endlag)
   * Forward Aerial with Byleth's forward aerial (same startup, less endlag)
   * Down Aerial with Hero's down aerial (increased disjoint)
-  * Back Aerial with MSF's Forward Aerial (increased disjoint, final hit same knockback as normal Back Air
   * Dash Attack with Corrin's dash attack (same startup, move ends with upward kick)
   * Soaring Slash with Jump
   * Counter with Cyclone
