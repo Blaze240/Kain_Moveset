@@ -16,6 +16,7 @@ Includes hitbox adjustments for the following moves (increased range):
   * Forward Aerial with Byleth's forward aerial (same startup, less endlag)
   * Down Aerial with Hero's down aerial (increased disjoint)
   * Up Aerial with Mii Swordfighter's Up Aerial
-  * Soaring Slash with Jump
-  * Counter with Cyclone
+  * Flare Blade with Cyclone
   * Double Edge Dance with Lance Burst
+  * Soaring Slash with Jump
+  * Counter with Gungnir
