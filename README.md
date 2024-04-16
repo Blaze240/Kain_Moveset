@@ -8,7 +8,6 @@ Includes hitbox adjustments for the following moves (increased range):
 * Down Tilt
 * Up Smash
 * Neutral Aerial
-* Up Aerial
 * Back Aerial
 
   # Move Replacements
@@ -16,7 +15,7 @@ Includes hitbox adjustments for the following moves (increased range):
   * Forward Smash with Byleth's forward smash (same startup, less endlag)
   * Forward Aerial with Byleth's forward aerial (same startup, less endlag)
   * Down Aerial with Hero's down aerial (increased disjoint)
-  * Dash Attack with Corrin's dash attack (same startup, move ends with upward kick)
+  * Up Aerial with Mii Swordfighter's Up Aerial
   * Soaring Slash with Jump
   * Counter with Cyclone
   * Double Edge Dance with Lance Burst
