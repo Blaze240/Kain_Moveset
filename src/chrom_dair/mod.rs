@@ -9,8 +9,7 @@ use {
     smashline::*
 };
 
-#[acmd_script( agent = "chrom", script = "game_attackairlw", category = ACMD_GAME )]
-unsafe fn chrom_attackairlw(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn chrom_attackairlw(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
         FighterAreaModuleImpl::enable_fix_jostle_area_xy(agent.module_accessor, 3.0, 3.0, 7.0, 3.0);
     }
@@ -41,7 +40,7 @@ unsafe fn chrom_attackairlw(agent: &mut L2CAgentBase) {
 
 
 pub fn install() {
-    smashline::install_acmd_scripts!(
-        chrom_attackairlw
-    );
+    Agent::new("chrom")
+    .game_acmd("game_attackairlw",chrom_attackairlw,Priority::Low)
+    .install();
 }

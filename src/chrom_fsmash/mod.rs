@@ -9,8 +9,7 @@ use {
     smashline::*
 };
 
-#[acmd_script( agent = "chrom", script = "game_attacks4", category = ACMD_GAME )]
-unsafe fn chrom_attacks4(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn chrom_attacks4(agent: &mut L2CAgentBase) {
      frame(agent.lua_state_agent, 14.0);
     execute(agent.lua_state_agent, 14.0);
     if macros::is_excute(agent) {
@@ -33,8 +32,7 @@ unsafe fn chrom_attacks4(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 85.0);
 }
 
-#[acmd_script( agent = "chrom", script = "game_attacks4hi", category = ACMD_GAME )]
-unsafe fn chrom_attacks4hi(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn chrom_attacks4hi(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 14.0);
     execute(agent.lua_state_agent, 14.0);
     if macros::is_excute(agent) {
@@ -57,8 +55,7 @@ unsafe fn chrom_attacks4hi(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 85.0);
 }
 
-#[acmd_script( agent = "chrom", script = "game_attacks4lw", category = ACMD_GAME )]
-unsafe fn chrom_attacks4lw(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn chrom_attacks4lw(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 14.0);
     execute(agent.lua_state_agent, 14.0);
     if macros::is_excute(agent) {
@@ -84,9 +81,9 @@ unsafe fn chrom_attacks4lw(agent: &mut L2CAgentBase) {
 
 
 pub fn install() {
-    smashline::install_acmd_scripts!(
-        chrom_attacks4,
-        chrom_attacks4hi,
-        chrom_attacks4lw
-    );
+    Agent::new("chrom")
+    .game_acmd("game_attacks4",chrom_attacks4,Priority::Low)
+    .game_acmd("game_attacks4",chrom_attacks4hi,Priority::Low)
+    .game_acmd("game_attacks4",chrom_attacks4lw,Priority::Low)
+    .install();
 }

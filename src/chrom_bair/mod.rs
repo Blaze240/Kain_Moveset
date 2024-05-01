@@ -9,8 +9,7 @@ use {
     smashline::*
 };
 
-#[acmd_script( agent = "chrom", script = "game_attackairb", category = ACMD_GAME )]
-unsafe fn chrom_attackairb(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn chrom_attackairb(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
         WorkModule::on_flag(agent.module_accessor, *FIGHTER_STATUS_ATTACK_AIR_FLAG_ENABLE_LANDING);
     }
@@ -53,8 +52,7 @@ unsafe fn chrom_attackairb(agent: &mut L2CAgentBase) {
     }
 }
 
-#[acmd_script( agent = "chrom", script = "sound_attackairb", category = ACMD_SOUND )]
-unsafe fn chrom_sfx_attackairb(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn chrom_sfx_attackairb(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 7.0);
     if macros::is_excute(agent) {
         macros::EFFECT_FOLLOW_NO_STOP(agent, Hash40::new("sys_attack_speedline"), Hash40::new("haver"), 0, 2, 0.5, -90, 0, 0, 0.5, true);
@@ -102,8 +100,7 @@ unsafe fn chrom_sfx_attackairb(agent: &mut L2CAgentBase) {
     }
 }
 
-#[acmd_script( agent = "chrom", script = "expression_attackairb", category = ACMD_EXPRESSION )]
-unsafe fn chrom_expression_attackairb(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn chrom_expression_attackairb(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 6.0);
     if macros::is_excute(agent) {
         ControlModule::set_rumble(agent.module_accessor, Hash40::new("rbkind_nohitm"), 0, false, *BATTLE_OBJECT_ID_INVALID as u32);
@@ -114,9 +111,9 @@ unsafe fn chrom_expression_attackairb(agent: &mut L2CAgentBase) {
     }
 }
 pub fn install() {
-    smashline::install_acmd_scripts!(
-        chrom_attackairb,
-        chrom_sfx_attackairb,
-        chrom_expression_attackairb
-    );
+    Agent::new("chrom")
+    .game_acmd("game_attackairb",chrom_attackairb,Priority::Low)
+    .sound_acmd("sound_attackairb",chrom_sfx_attackairb,Priority::Low)
+    .expression_acmd("expression_attackairb",chrom_expression_attackairb,Priority::Low)
+    .install();
 }

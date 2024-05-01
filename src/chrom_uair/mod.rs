@@ -9,8 +9,7 @@ use {
     smashline::*
 };
 
-#[acmd_script( agent = "chrom", script = "game_attackairhi", category = ACMD_GAME )]
-unsafe fn chrom_attackairhi(agent: &mut L2CAgentBase) {
+unsafe extern "C" fn chrom_attackairhi(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 11.0);
     if macros::is_excute(agent) {
         WorkModule::on_flag(agent.module_accessor, *FIGHTER_STATUS_ATTACK_AIR_FLAG_ENABLE_LANDING);
@@ -32,7 +31,7 @@ unsafe fn chrom_attackairhi(agent: &mut L2CAgentBase) {
 
 
 pub fn install() {
-    smashline::install_acmd_scripts!(
-        chrom_attackairhi
-    );
+    Agent::new("chrom")
+    .game_acmd("game_attackairhi",chrom_attackairhi,Priority::Low)
+    .install();
 }
