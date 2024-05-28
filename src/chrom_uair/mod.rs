@@ -2,7 +2,7 @@ use {
     smash::{
         lua2cpp::*,
         phx::*,
-        app::{sv_animcmd::*, lua_bind::*, *},
+        app::{sv_animcmd::*, lua_bind::*},
         lib::lua_const::*
     },
     smash_script::*,
@@ -32,6 +32,6 @@ unsafe extern "C" fn chrom_attackairhi(agent: &mut L2CAgentBase) {
 
 pub fn install() {
     Agent::new("chrom")
-    .game_acmd("game_attackairhi",chrom_attackairhi,Priority::Low)
+    .game_acmd("game_attackairhi_kain",chrom_attackairhi,Priority::Low)
     .install();
 }
